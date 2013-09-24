@@ -104,13 +104,23 @@ public class Stats {
 	}
 
 	public static int mode(int[] a) {
-		int mode = 0;
-		for (int i=0; i<a.length - 1; i++) {
-			if (a[i] == a[i+1]) {
-				mode = a[i];
+		int max = a[0];
+		int lastCount = 0;
+
+		for (int i = 0 ; i < a.length ; i++) {
+			int count = 0;
+			for (int j = 0 ; j < a.length ; j++) {
+				if (a[j] == a[i]) {
+					count++;
+				}
+			}
+			if (count > lastCount) {
+				lastCount = count;
+				max = a[i];
 			}
 		}
-		return mode;
+
+		return max;
 	}
 
 	public static double standardDeviation(int[] a) {
